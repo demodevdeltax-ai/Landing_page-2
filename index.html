@@ -9,14 +9,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
 
-/* ═══════════════════════════════════════════════
+/* ════════════════════════════════════════════
    RESET + BASE
-═══════════════════════════════════════════════ */
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
   font-family: 'Poppins', sans-serif;
@@ -25,14 +21,13 @@ body {
   background: #ffffff;
 }
 img { display: block; max-width: 100%; }
-a   { text-decoration: none; }
 
-/* ═══════════════════════════════════════════════
+/* ════════════════════════════════════════════
    NAVBAR
-   height ≈ 68px | bg #ffffff | sticky
-   logo: shield SVG + "MERITS" 15px/800 + "International School" 10px/400
-   button: bg #1B3A52, white, 13px/700, radius 4px, px 24 py 10
-═══════════════════════════════════════════════ */
+   bg: #fff | sticky | shadow
+   logo img: h 52px auto-width
+   Apply Now btn: #1B3A52, white, 13px/700
+════════════════════════════════════════════ */
 .navbar {
   position: sticky;
   top: 0;
@@ -43,32 +38,13 @@ a   { text-decoration: none; }
   align-items: center;
   justify-content: space-between;
   padding: 10px 48px;
+  height: 70px;
 }
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.logo svg {
-  width: 50px;
-  height: 54px;
-  flex-shrink: 0;
-}
-.logo-words {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.2;
-}
-.logo-words .name {
-  font-size: 15px;
-  font-weight: 800;
-  color: #1B3A52;
-  letter-spacing: 0.4px;
-}
-.logo-words .sub {
-  font-size: 10px;
-  font-weight: 400;
-  color: #666666;
+.navbar-logo {
+  height: 50px;
+  width: auto;
+  object-fit: contain;
+  display: block;
 }
 .btn-apply {
   background: #1B3A52;
@@ -82,15 +58,16 @@ a   { text-decoration: none; }
   letter-spacing: 0.2px;
   cursor: pointer;
   transition: background 0.2s;
+  white-space: nowrap;
 }
 .btn-apply:hover { background: #0f2638; }
 
-/* ═══════════════════════════════════════════════
+/* ════════════════════════════════════════════
    HERO SECTION
-   bg #ffffff | min-height 340px | 50/50 split
-   LEFT: h1 40px/800/#1B3A52, p 13.5px/400/#555
-   RIGHT: dark bg #0f2638, event image overlay
-═══════════════════════════════════════════════ */
+   bg: #fff | flex 50/50
+   LEFT: h1 40px/800/#1B3A52 | p 13.5px/400/#555
+   RIGHT: actual photo fills fully, object-fit cover
+════════════════════════════════════════════ */
 .hero {
   display: flex;
   min-height: 340px;
@@ -121,98 +98,53 @@ a   { text-decoration: none; }
 .hero-right {
   flex: 1;
   position: relative;
-  background: #0f2638;
   overflow: hidden;
   min-height: 340px;
+  background: #0f2638;
 }
-/* Actual event image — place it as background or <img> */
-.hero-right img {
+/* Hero image — fills entire right panel, cropped to cover */
+.hero-right .hero-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  object-position: center center;
   display: block;
-}
-.hero-event-placeholder {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  padding: 32px;
-  text-align: center;
-}
-.hero-event-placeholder .proudly {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 3.5px;
-  text-transform: uppercase;
-  color: #F5C518;
-  margin-bottom: 6px;
-}
-.hero-event-placeholder .intro-title {
-  font-size: 28px;
-  font-weight: 800;
-  color: #ffffff;
-  line-height: 1.2;
-}
-.hero-event-placeholder .intro-sub {
-  font-size: 12px;
-  color: rgba(255,255,255,0.62);
-  margin-top: 6px;
-}
-/* Yellow bar at the bottom edge of hero-right matching Figma */
-.hero-right::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 4px;
-  background: #F5C518;
+  min-height: 340px;
 }
 
-/* ═══════════════════════════════════════════════
-   ADMISSION BAND  (orange section)
-   bg #E8901A | left: student photo | right: text+buttons
-   h2 36px/800/#fff | p 13.5px/400/rgba(255,255,255,0.92)
-   buttons: bg #fff, color #1B3A52, 13px/700, radius 5px
-═══════════════════════════════════════════════ */
+/* ════════════════════════════════════════════
+   ORANGE ADMISSION BAND
+   bg: #E8901A
+   LEFT 300px: student PNG  — mix-blend-mode:multiply
+                              removes white bg on orange
+   RIGHT: h2 36px/800/#fff | p 13.5px | 2 white btns
+════════════════════════════════════════════ */
 .admission {
   background: #E8901A;
   display: flex;
   min-height: 295px;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
 }
 .admission-photo {
-  flex: 0 0 292px;
+  flex: 0 0 300px;
   position: relative;
   overflow: hidden;
+  min-height: 295px;
 }
-.admission-photo img {
+/* Student photo: PNG transparent bg sits on orange;
+   positioned to overflow upward into hero section */
+.admission-photo .student-img {
   position: absolute;
   bottom: 0;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: 100%;
   height: 120%;
-  object-fit: cover;
-  object-position: top center;
-}
-/* Photo placeholder */
-.student-ph {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  padding-bottom: 16px;
-  background: rgba(0,0,0,0.12);
-}
-.student-ph span {
-  font-size: 11px;
-  color: rgba(255,255,255,0.4);
-  font-style: italic;
+  object-fit: contain;
+  object-position: bottom center;
+  mix-blend-mode: multiply;
+  display: block;
 }
 .admission-body {
   flex: 1;
@@ -231,15 +163,11 @@ a   { text-decoration: none; }
 .admission-body p {
   font-size: 13.5px;
   font-weight: 400;
-  color: rgba(255,255,255,0.92);
+  color: rgba(255,255,255,0.93);
   line-height: 1.65;
   margin-bottom: 30px;
 }
-.adm-btns {
-  display: flex;
-  gap: 14px;
-  flex-wrap: wrap;
-}
+.adm-btns { display: flex; gap: 14px; flex-wrap: wrap; }
 .adm-btn {
   display: inline-flex;
   align-items: center;
@@ -254,21 +182,23 @@ a   { text-decoration: none; }
   font-weight: 700;
   cursor: pointer;
   transition: background 0.2s;
+  white-space: nowrap;
 }
 .adm-btn:hover { background: #f0f0f0; }
 .adm-btn svg { width: 15px; height: 15px; fill: #1B3A52; flex-shrink: 0; }
 
-/* ═══════════════════════════════════════════════
+/* ════════════════════════════════════════════
    CURRICULUM SECTION
-   bg #ffffff | center-aligned
-   CBSE + Cambridge logos row
-   "GRADES OFFERED": 11px/500/#999/uppercase/ls 2.5px
+   bg: #fff | text-center | pad 72px 60px
+   Logo row: single CBSE+Cambridge image, h 58px
+   eyebrow: 11px/500/#999/uppercase/ls2.5
    h2: 46px/900/#1B3A52
-   feature grid: 4 cols × 2 rows
-   card bg #E6F2FB, radius 12px, pad 20px 16px
-   icon box: 46×46px, bg #1B3A52, radius 10px
+   feat grid: 4col repeat, gap 18px, max-w 1020px
+   feat card: bg #E6F2FB, r12, p 20px 16px, flex row
+   icon box: 46x46, bg #1B3A52, r10, flex center
+   icon svg: 22px white
    span: 12.5px/600/#1B3A52
-═══════════════════════════════════════════════ */
+════════════════════════════════════════════ */
 .curriculum {
   background: #ffffff;
   padding: 72px 60px;
@@ -278,59 +208,14 @@ a   { text-decoration: none; }
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 52px;
   margin-bottom: 36px;
 }
-.logo-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 22px;
-  font-weight: 700;
-  color: #1B3A52;
-}
-/* CBSE badge */
-.cbse-circle {
-  width: 54px;
-  height: 54px;
-  border-radius: 50%;
-  border: 2.5px solid #dddddd;
-  background: conic-gradient(
-    #1976D2 0deg 90deg,
-    #388E3C 90deg 180deg,
-    #F57C00 180deg 270deg,
-    #D32F2F 270deg 360deg
-  );
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-.cbse-circle span {
-  font-size: 9.5px;
-  font-weight: 900;
-  color: #ffffff;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.75);
-  letter-spacing: 0.3px;
-}
-/* Cambridge badge */
-.cambridge-circle {
-  width: 54px;
-  height: 54px;
-  border-radius: 50%;
-  border: 2.5px solid #dddddd;
-  background: #8B1818;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-.cambridge-circle span {
-  font-size: 7px;
-  font-weight: 800;
-  color: #ffffff;
-  text-align: center;
-  line-height: 1.3;
+/* Single combined CBSE+Cambridge image */
+.logo-row .boards-img {
+  height: 58px;
+  width: auto;
+  object-fit: contain;
+  display: block;
 }
 .grade-eyebrow {
   font-size: 11px;
@@ -381,16 +266,16 @@ a   { text-decoration: none; }
   line-height: 1.38;
 }
 
-/* ═══════════════════════════════════════════════
+/* ════════════════════════════════════════════
    CAMPUS SECTION
-   bg #ffffff | pad 72px 60px
+   bg: #fff | pad 72px 60px
    h2: 36px/800/#1B3A52 center
    desc: 13px/400/#666 center max-w 820px
-   2-col: left belief card | right 2×2 photo grid
-   belief h3: 21px/700/#1565A7
-   feel tags: 2×2 grid, pad 11px 18px, radius 8px, 14px/600
-   photo grid: 4 cells, each 168px tall, radius 8px
-═══════════════════════════════════════════════ */
+   2-col flex gap 54px
+   LEFT: belief h3 21px/700/#1565A7
+         feel-grid 2x2, tags 14px/600 radius 8px
+   RIGHT: 2x2 photo grid, each img h 168px cover r8
+════════════════════════════════════════════ */
 .campus {
   background: #ffffff;
   padding: 72px 60px;
@@ -416,9 +301,10 @@ a   { text-decoration: none; }
   display: flex;
   gap: 54px;
   align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
 }
-/* Left */
-.campus-belief { flex: 1; }
+.campus-belief { flex: 0 0 380px; }
 .campus-belief h3 {
   font-size: 21px;
   font-weight: 700;
@@ -449,38 +335,31 @@ a   { text-decoration: none; }
   color: #555555;
   line-height: 1.72;
 }
-/* Right: 2×2 photo grid */
+/* Campus photo grid: 2x2 */
 .campus-photos {
   flex: 1;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 9px;
 }
-.campus-photos img,
-.cp-ph {
+.campus-photos img {
   width: 100%;
   height: 168px;
-  border-radius: 8px;
   object-fit: cover;
+  border-radius: 8px;
   display: block;
 }
-.cp-ph {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-  font-weight: 600;
-  color: rgba(255,255,255,0.82);
-}
 
-/* ═══════════════════════════════════════════════
+/* ════════════════════════════════════════════
    BEYOND ACADEMICS
-   bg #f8f9fa | pad 72px 60px
+   bg: #f8f9fa | pad 72px 60px
    h2: 36px/800/#1B3A52 center
-   2-col: left photo (380px/290px/radius 14px)
-          right: h3 20px/700/#E8901A + desc 13px + list
-   list items: 13.5px/400/#444, ">" prefix #E8901A/800
-═══════════════════════════════════════════════ */
+   2-col flex gap 58px, top margin 50px
+   LEFT wrap: flex 0 0 380px, h 290px, r14
+   LEFT img: w100% h100% cover
+   RIGHT h3: 20px/700/#E8901A
+   list: 13.5px/400/#444, > prefix #E8901A/800
+════════════════════════════════════════════ */
 .beyond {
   background: #f8f9fa;
   padding: 72px 60px;
@@ -490,29 +369,24 @@ a   { text-decoration: none; }
   gap: 58px;
   align-items: center;
   margin-top: 50px;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .beyond-img-wrap {
-  flex: 0 0 380px;
-  height: 290px;
+  flex: 0 0 420px;
+  height: 300px;
   border-radius: 14px;
   overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.10);
 }
+/* Students running photo */
 .beyond-img-wrap img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center top;
   display: block;
-}
-.beyond-img-ph {
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, #81c784, #43a047);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #ffffff;
-  font-size: 13px;
-  font-weight: 600;
 }
 .beyond-text { flex: 1; }
 .beyond-text h3 {
@@ -548,14 +422,13 @@ a   { text-decoration: none; }
   margin-top: 1px;
 }
 
-/* ═══════════════════════════════════════════════
+/* ════════════════════════════════════════════
    SAFETY SECTION
-   bg #F5C518 | pad 72px 60px | text-center
+   bg: #F5C518 | pad 72px 60px | center
    h2: 38px/800/#1B3A52
-   p: 13.5px/400/#1B3A52, max-w 720px
-   features: 13.5px/600/#1B3A52, pipe-separated
-   pipe border: 2px solid #1B3A52
-═══════════════════════════════════════════════ */
+   p: 13.5px/400/#1B3A52 max-w 720px
+   features: 13.5px/600/#1B3A52 pipe-sep
+════════════════════════════════════════════ */
 .safety {
   background: #F5C518;
   padding: 72px 60px;
@@ -592,18 +465,17 @@ a   { text-decoration: none; }
 }
 .sf-item:last-child { border-right: none; }
 
-/* ═══════════════════════════════════════════════
-   CONTACT / BOOK VISIT FORM
-   bg #1A3347 | pad 72px 60px | text-center
+/* ════════════════════════════════════════════
+   CONTACT FORM
+   bg: #1A3347 | pad 72px 60px | center
    h2: 36px/800/#fff
-   taglines: 12.5px/400/rgba(255,255,255,0.40), pipe sep
-   form grid: 2 cols × 3 rows, gap 14px, max-w 760px
-   field: pad 15px 18px, bg rgba(255,255,255,0.07)
-          border rgba(255,255,255,0.14), radius 6px
-          color rgba(255,255,255,0.65), 13px/400
-   submit: bg #F5C518, color #1B3A52, 15px/800,
-           uppercase, ls 1.2px, pad 17px 58px, radius 5px
-═══════════════════════════════════════════════ */
+   taglines: 12.5px/400/rgba(255,255,255,.40)
+   fields: bg rgba(255,255,255,.07), border rgba(255,255,255,.14)
+           r6, 13px/400/rgba(255,255,255,.65)
+           pad 15px 18px
+   submit: bg #F5C518, color #1B3A52, 15px/800
+           uppercase, ls 1.2px, pad 17px 58px, r5
+════════════════════════════════════════════ */
 .contact {
   background: #1A3347;
   padding: 72px 60px;
@@ -621,18 +493,18 @@ a   { text-decoration: none; }
   justify-content: center;
   flex-wrap: wrap;
   align-items: center;
-  gap: 4px 0;
+  gap: 0;
   margin-bottom: 46px;
 }
 .ct-item {
   font-size: 12.5px;
   font-weight: 400;
   color: rgba(255,255,255,0.40);
-  padding: 0 16px;
+  padding: 0 14px;
 }
-.ct-divider {
+.ct-div {
   font-size: 12px;
-  color: rgba(255,255,255,0.20);
+  color: rgba(255,255,255,0.18);
 }
 .visit-form {
   max-width: 760px;
@@ -663,8 +535,7 @@ a   { text-decoration: none; }
   border-color: rgba(255,255,255,0.36);
   background: rgba(255,255,255,0.10);
 }
-input[type="date"].form-field,
-input[type="time"].form-field { color-scheme: dark; }
+input[type="date"].form-field { color-scheme: dark; }
 .btn-submit {
   margin-top: 8px;
   background: #F5C518;
@@ -683,89 +554,78 @@ input[type="time"].form-field { color-scheme: dark; }
 .btn-submit:hover  { background: #e6b800; }
 .btn-submit:active { transform: scale(0.98); }
 
-/* ═══════════════════════════════════════════════
-   RESPONSIVE  (≤ 900px)
-═══════════════════════════════════════════════ */
+/* ════════════════════════════════════════════
+   RESPONSIVE
+════════════════════════════════════════════ */
 @media (max-width: 1024px) {
   .feat-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 900px) {
-  .navbar { padding: 10px 22px; }
-  /* hero stacks */
+  .navbar { padding: 10px 22px; height: auto; }
+  .navbar-logo { height: 42px; }
   .hero { flex-direction: column; }
   .hero-left { padding: 36px 24px 32px; }
   .hero-left h1 { font-size: 28px; }
-  .hero-left p { font-size: 13px; }
-  .hero-right { min-height: 220px; }
-  /* admission stacks */
+  .hero-right { min-height: 240px; }
+  .hero-right .hero-img { min-height: 240px; }
   .admission { flex-direction: column; }
-  .admission-photo { flex: none; height: 240px; }
-  .admission-photo img { height: 100%; }
-  .admission-body { padding: 36px 24px; }
+  .admission-photo { flex: none; height: 260px; min-height: 260px; }
+  .admission-photo .student-img { height: 100%; }
+  .admission-body { padding: 32px 24px; }
   .admission-body h2 { font-size: 26px; }
-  /* curriculum */
   .curriculum { padding: 52px 22px; }
   .curriculum h2 { font-size: 30px; }
-  .feat-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
-  /* campus */
+  .feat-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
   .campus { padding: 52px 22px; }
   .sec-heading { font-size: 26px; }
-  .campus-cols { flex-direction: column; gap: 36px; }
-  /* beyond */
+  .campus-cols { flex-direction: column; gap: 32px; }
+  .campus-belief { flex: none; width: 100%; }
   .beyond { padding: 52px 22px; }
-  .beyond-cols { flex-direction: column; gap: 32px; }
-  .beyond-img-wrap { flex: none; width: 100%; }
-  /* safety */
+  .beyond-cols { flex-direction: column; gap: 30px; margin-top: 36px; }
+  .beyond-img-wrap { flex: none; width: 100%; height: 240px; }
   .safety { padding: 52px 22px; }
   .safety h2 { font-size: 26px; }
-  /* contact */
   .contact { padding: 52px 22px; }
   .contact h2 { font-size: 26px; }
   .form-row { grid-template-columns: 1fr; }
 }
 @media (max-width: 560px) {
-  .hero-left h1 { font-size: 24px; }
-  .curriculum h2 { font-size: 24px; }
-  .feat-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .hero-left h1 { font-size: 22px; }
+  .curriculum h2 { font-size: 22px; }
+  .logo-row .boards-img { height: 46px; }
+  .feat-grid { grid-template-columns: 1fr 1fr; gap: 9px; }
   .adm-btns { flex-direction: column; }
   .campus-photos { grid-template-columns: 1fr; }
-  .logo-row { gap: 28px; }
   .btn-submit { padding: 15px 36px; font-size: 13.5px; }
+  .sf-item { font-size: 12px; padding: 0 10px; }
 }
 
   </style>
 </head>
 <body>
 
-<!-- ══════════════════════════════════════════════════
+<!-- ═══════════════════════════════════════
      NAVBAR
-══════════════════════════════════════════════════ -->
+═══════════════════════════════════════ -->
 <nav class="navbar">
-  <div class="logo">
-    <!-- Shield SVG logo — matches the Merits shield in the Figma -->
-    <svg viewBox="0 0 50 56" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M25 2L3 11.5V29C3 42.5 25 54 25 54C25 54 47 42.5 47 29V11.5L25 2Z" fill="#1B3A52"/>
-      <path d="M25 7L7 15.5V29C7 40.5 25 51 25 51C25 51 43 40.5 43 29V15.5L25 7Z" fill="#ffffff" fill-opacity="0.07"/>
-      <!-- Inner shield accent -->
-      <path d="M25 12L11 19V29C11 37.5 25 47 25 47C25 47 39 37.5 39 29V19L25 12Z" fill="#E8901A" fill-opacity="0.18"/>
-      <text x="25" y="27" font-family="Arial,sans-serif" font-size="7" fill="#ffffff"
-            text-anchor="middle" dominant-baseline="middle" font-weight="bold" letter-spacing="0.8">MERITS</text>
-      <text x="25" y="37" font-family="Arial,sans-serif" font-size="4.5" fill="rgba(255,255,255,0.6)"
-            text-anchor="middle" dominant-baseline="middle">INTL SCHOOL</text>
-    </svg>
-    <div class="logo-words">
-      <span class="name">MERITS</span>
-      <span class="sub">International School</span>
-    </div>
-  </div>
-  <button class="btn-apply" onclick="document.getElementById('visit').scrollIntoView({behavior:'smooth'})">
+  <!-- Official Merits International School logo -->
+  <img
+    class="navbar-logo"
+    src="images/merits_logo.png"
+    alt="Merits International School"
+  />
+  <button
+    class="btn-apply"
+    onclick="document.getElementById('visit').scrollIntoView({behavior:'smooth'})"
+  >
     Apply Now
   </button>
 </nav>
 
-<!-- ══════════════════════════════════════════════════
-     HERO  —  left: headline | right: event ceremony
-══════════════════════════════════════════════════ -->
+<!-- ═══════════════════════════════════════
+     HERO  —  left: headline text
+              right: PROUDLY INTRODUCING photo
+═══════════════════════════════════════ -->
 <section class="hero">
 
   <div class="hero-left">
@@ -774,30 +634,30 @@ input[type="time"].form-field { color-scheme: dark; }
   </div>
 
   <div class="hero-right">
-    <!--
-      REPLACE with actual event image:
-      <img src="images/event-ceremony.jpg" alt="Merits School — Proudly Introducing Ceremony" />
-    -->
-    <div class="hero-event-placeholder">
-      <span class="proudly">Proudly Introducing</span>
-      <span class="intro-title">MERITS<br>International School</span>
-      <span class="intro-sub">Award &amp; Launch Ceremony</span>
-    </div>
+    <!-- PROUDLY INTRODUCING ceremony photo -->
+    <img
+      class="hero-img"
+      src="images/Herosection.png"
+      alt="Merits International School – Proudly Introducing Launch Ceremony"
+    />
   </div>
 
 </section>
 
-<!-- ══════════════════════════════════════════════════
+<!-- ═══════════════════════════════════════
      ORANGE ADMISSION BAND
-══════════════════════════════════════════════════ -->
+     left: student girl PNG (transparent bg)
+     right: admissions text + 2 CTA buttons
+═══════════════════════════════════════ -->
 <section class="admission">
 
   <div class="admission-photo">
-    <!--
-      REPLACE with actual student photo:
-      <img src="images/student-girl.jpg" alt="Merits International School Student" />
-    -->
-    <div class="student-ph"><span>[ Student Photo ]</span></div>
+    <!-- Indian schoolgirl PNG — transparent bg blends on orange -->
+    <img
+      class="student-img"
+      src="images/Student Photo.png"
+      alt="Merits International School Student"
+    />
   </div>
 
   <div class="admission-body">
@@ -805,12 +665,10 @@ input[type="time"].form-field { color-scheme: dark; }
     <p>Book a personalized campus visit and experience the<br>environment your child deserves.</p>
     <div class="adm-btns">
       <button class="adm-btn" onclick="document.getElementById('visit').scrollIntoView({behavior:'smooth'})">
-        <!-- Location pin icon -->
         <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
         Book a Campus Visit
       </button>
       <button class="adm-btn" onclick="document.getElementById('visit').scrollIntoView({behavior:'smooth'})">
-        <!-- Person icon -->
         <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
         Speak With Admission Counselor
       </button>
@@ -819,21 +677,22 @@ input[type="time"].form-field { color-scheme: dark; }
 
 </section>
 
-<!-- ══════════════════════════════════════════════════
-     CURRICULUM  —  CBSE · Cambridge · Grade 1–7
-══════════════════════════════════════════════════ -->
+<!-- ═══════════════════════════════════════
+     CURRICULUM
+     CBSE + Cambridge logos (single combined image)
+     GRADES OFFERED eyebrow
+     CURRICULUM GRADE 1-7 heading
+     8 feature cards 4×2 grid
+═══════════════════════════════════════ -->
 <section class="curriculum">
 
-  <!-- Board logos -->
+  <!-- Single image containing both CBSE and Cambridge logos -->
   <div class="logo-row">
-    <div class="logo-item">
-      <div class="cbse-circle"><span>CBSE</span></div>
-      <span>CBSE</span>
-    </div>
-    <div class="logo-item">
-      <div class="cambridge-circle"><span>CAM<br>BRIDGE</span></div>
-      <span>Cambridge</span>
-    </div>
+    <img
+      class="boards-img"
+      src="images/CBSC & Camebridge.png"
+      alt="CBSE and Cambridge – Affiliated Boards"
+    />
   </div>
 
   <p class="grade-eyebrow">Grades Offered</p>
@@ -841,82 +700,58 @@ input[type="time"].form-field { color-scheme: dark; }
 
   <div class="feat-grid">
 
-    <!-- 1. Academic Excellence -->
     <div class="feat-card">
       <div class="feat-icon">
-        <svg viewBox="0 0 24 24">
-          <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/>
-        </svg>
+        <svg viewBox="0 0 24 24"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>
       </div>
       <span>Academic<br>Excellence</span>
     </div>
 
-    <!-- 2. Concept-Based Learning -->
     <div class="feat-card">
       <div class="feat-icon">
-        <svg viewBox="0 0 24 24">
-          <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
-        </svg>
+        <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
       </div>
       <span>Concept-Based<br>Learning</span>
     </div>
 
-    <!-- 3. Skill Development -->
     <div class="feat-card">
       <div class="feat-icon">
-        <svg viewBox="0 0 24 24">
-          <path d="M7 2v11h3v9l7-12h-4l4-8z"/>
-        </svg>
+        <svg viewBox="0 0 24 24"><path d="M7 2v11h3v9l7-12h-4l4-8z"/></svg>
       </div>
       <span>Skill<br>Development</span>
     </div>
 
-    <!-- 4. Future-Ready Students -->
     <div class="feat-card">
       <div class="feat-icon">
-        <svg viewBox="0 0 24 24">
-          <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/>
-        </svg>
+        <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
       </div>
       <span>Future-Ready<br>Students</span>
     </div>
 
-    <!-- 5. Technology Enabled Education -->
     <div class="feat-card">
       <div class="feat-icon">
-        <svg viewBox="0 0 24 24">
-          <path d="M20 3H4v10c0 2.21 1.79 4 4 4h6c2.21 0 4-1.79 4-4v-3h2c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2zm0 5h-2V5h2v3zM4 19h16v2H4z"/>
-        </svg>
+        <svg viewBox="0 0 24 24"><path d="M20 3H4v10c0 2.21 1.79 4 4 4h6c2.21 0 4-1.79 4-4v-3h2c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2zm0 5h-2V5h2v3zM4 19h16v2H4z"/></svg>
       </div>
       <span>Technology<br>Enabled Education</span>
     </div>
 
-    <!-- 6. Safe & Nurturing Environment -->
     <div class="feat-card">
       <div class="feat-icon">
-        <svg viewBox="0 0 24 24">
-          <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
-        </svg>
+        <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
       </div>
       <span>Safe &amp; Nurturing<br>Environment</span>
     </div>
 
-    <!-- 7. Student Ratio -->
     <div class="feat-card">
       <div class="feat-icon">
-        <svg viewBox="0 0 24 24">
-          <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
-        </svg>
+        <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
       </div>
       <span>Student ratio<br>1 : 20 each class</span>
     </div>
 
-    <!-- 8. Indoor & Outdoor Sports -->
     <div class="feat-card">
       <div class="feat-icon">
-        <svg viewBox="0 0 24 24">
-          <path d="M13.49 5.48c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm-3.6 13.9l1-4.4 2.1 2v6h2v-7.5l-2.1-2 .6-3c1.3 1.5 3.3 2.5 5.5 2.5v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1l-5.2 2.2v4.7h2v-3.4l1.8-.7-1.6 8.1-4.9-1-.4 2 7 1.4z"/>
-        </svg>
+        <svg viewBox="0 0 24 24"><path d="M13.49 5.48c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm-3.6 13.9l1-4.4 2.1 2v6h2v-7.5l-2.1-2 .6-3c1.3 1.5 3.3 2.5 5.5 2.5v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1l-5.2 2.2v4.7h2v-3.4l1.8-.7-1.6 8.1-4.9-1-.4 2 7 1.4z"/></svg>
       </div>
       <span>Indoor &amp;<br>Outdoor Sports</span>
     </div>
@@ -924,16 +759,19 @@ input[type="time"].form-field { color-scheme: dark; }
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════════
-     CAMPUS  —  belief card + 2×2 photo grid
-══════════════════════════════════════════════════ -->
+<!-- ═══════════════════════════════════════
+     CAMPUS
+     heading + desc (center)
+     left: belief statement + feel tags
+     right: 2×2 photo grid with real campus images
+═══════════════════════════════════════ -->
 <section class="campus">
   <h2 class="sec-heading">A Campus Designed For<br>Curious Young Minds</h2>
   <p class="sec-desc">At Merits International School, every space is thoughtfully designed to encourage exploration, confidence, creativity, and joyful learning. From interactive classrooms and modern labs to sports arenas, libraries, activity zones, and secure transport systems, every corner of the campus supports your child's academic and personal growth.</p>
 
   <div class="campus-cols">
 
-    <!-- LEFT: belief statement -->
+    <!-- LEFT: belief card -->
     <div class="campus-belief">
       <h3>We believe children<br>learn best when<br>they feel</h3>
       <div class="feel-grid">
@@ -945,38 +783,51 @@ input[type="time"].form-field { color-scheme: dark; }
       <p>And that is exactly the environment we strive to create every single day.</p>
     </div>
 
-    <!-- RIGHT: campus photo grid -->
+    <!-- RIGHT: 2×2 campus photo grid -->
     <div class="campus-photos">
-      <!--
-        Replace each .cp-ph with:
-        <img src="images/campus-1.jpg" alt="Classroom activity" />
-        etc.
-      -->
-      <div class="cp-ph" style="background:#E8901A;">Classroom Activity</div>
-      <div class="cp-ph" style="background:#1B3A52;">Campus Building</div>
-      <div class="cp-ph" style="background:#2A9D8F;">Sports Ground</div>
-      <div class="cp-ph" style="background:#457B9D;">Student Event</div>
+      <!-- Top-left: Classroom learning activity -->
+      <img
+        src="images/Classroom activity.png"
+        alt="Classroom Activity – Teacher guiding students"
+      />
+      <!-- Top-right: Student project display -->
+      <img
+        src="images/Student Event.png"
+        alt="Student Event – Science and seasons project"
+      />
+      <!-- Bottom-left: School sports ground & building -->
+      <img
+        src="images/Sports Ground.png"
+        alt="Sports Ground – School campus basketball court"
+      />
+      <!-- Bottom-right: Cultural stage performance -->
+      <img
+        src="images/Campus Building.png"
+        alt="Campus Event – Students stage performance"
+      />
     </div>
 
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════════
+<!-- ═══════════════════════════════════════
      BEYOND ACADEMICS
-══════════════════════════════════════════════════ -->
+     heading + desc (center)
+     left: students running on track (real photo)
+     right: learning approach bullet list
+═══════════════════════════════════════ -->
 <section class="beyond">
   <h2 class="sec-heading">Beyond Academics.<br>Towards Confidence.</h2>
   <p class="sec-desc">Education today is not only about marks. It is about preparing children to think independently, communicate confidently, solve problems creatively, and grow into responsible individuals.</p>
 
   <div class="beyond-cols">
 
-    <!-- LEFT: photo -->
+    <!-- LEFT: students running on red track -->
     <div class="beyond-img-wrap">
-      <!--
-        Replace with:
-        <img src="images/students-track.jpg" alt="Students on sports track" />
-      -->
-      <div class="beyond-img-ph">Students on Sports Track</div>
+      <img
+        src="images/Students on sports track.png"
+        alt="Students running on school sports track"
+      />
     </div>
 
     <!-- RIGHT: approach list -->
@@ -997,9 +848,9 @@ input[type="time"].form-field { color-scheme: dark; }
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════════
-     SAFETY  —  yellow section
-══════════════════════════════════════════════════ -->
+<!-- ═══════════════════════════════════════
+     SAFETY SECTION  —  yellow bg
+═══════════════════════════════════════ -->
 <section class="safety">
   <h2>Because Nothing Matters More<br>Than Your Child's Safety</h2>
   <p class="sintro">We understand that choosing a school is one of the most important decisions for any parent. That's why Merits International School prioritizes:</p>
@@ -1013,18 +864,18 @@ input[type="time"].form-field { color-scheme: dark; }
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════════
-     BOOK CAMPUS VISIT  —  dark form section
-══════════════════════════════════════════════════ -->
+<!-- ═══════════════════════════════════════
+     BOOK CAMPUS VISIT  —  dark navy form
+═══════════════════════════════════════ -->
 <section class="contact" id="visit">
   <h2>Book Your Personalized<br>Campus Visit</h2>
   <div class="contact-tags">
     <span class="ct-item">See the classrooms</span>
-    <span class="ct-divider">|</span>
+    <span class="ct-div">|</span>
     <span class="ct-item">Explore the facilities</span>
-    <span class="ct-divider">|</span>
+    <span class="ct-div">|</span>
     <span class="ct-item">Meet the faculty</span>
-    <span class="ct-divider">|</span>
+    <span class="ct-div">|</span>
     <span class="ct-item">Experience the environment firsthand.</span>
   </div>
 
@@ -1038,7 +889,7 @@ input[type="time"].form-field { color-scheme: dark; }
       <input class="form-field" type="email" placeholder="Email ID"       required />
     </div>
     <div class="form-row">
-      <input class="form-field" type="date"  placeholder="Visiting Date"  required />
+      <input class="form-field" type="date"                                required />
       <input class="form-field" type="text"  placeholder="Visiting Hours" required />
     </div>
     <div class="form-row full">
@@ -1051,7 +902,7 @@ input[type="time"].form-field { color-scheme: dark; }
 <script>
   function submitForm(e) {
     e.preventDefault();
-    alert('Thank you! Our admissions team will reach out shortly to confirm your campus visit.');
+    alert('Thank you! Our admissions team will contact you shortly to confirm your campus visit.');
     e.target.reset();
   }
 </script>
