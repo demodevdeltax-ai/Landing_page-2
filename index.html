@@ -559,52 +559,304 @@ input[type="date"].form-field { color-scheme: dark; }
 /* ════════════════════════════════════════════
    RESPONSIVE
 ════════════════════════════════════════════ */
+/* ════════════════════════════════════════════
+   RESPONSIVE
+════════════════════════════════════════════ */
+
 @media (max-width: 1024px) {
-  .feat-grid { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 900px) {
-  .navbar { padding: 10px 22px; height: auto; }
-  .navbar-logo { height: 42px; }
-  .hero { flex-direction: column; }
-  .hero-left { padding: 36px 24px 32px; }
-  .hero-left h1 { font-size: 28px; }
-  .hero-right { min-height: 240px; }
-  .hero-right .hero-img { min-height: 240px; }
-  .admission { flex-direction: column; }
-  .admission-photo { flex: none; height: 260px; min-height: 260px; }
-  .admission-photo .student-img { height: 100%; }
-  .admission-body { padding: 32px 24px; }
-  .admission-body h2 { font-size: 26px; }
-  .curriculum { padding: 52px 22px; }
-  .curriculum h2 { font-size: 30px; }
-  .feat-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-  .campus { padding: 52px 22px; }
-  .sec-heading { font-size: 26px; }
-  .campus-cols { flex-direction: column; gap: 32px; }
-  .campus-belief { flex: none; width: 100%; }
-  .beyond { padding: 52px 22px; }
-  .beyond-cols { flex-direction: column; gap: 30px; margin-top: 36px; }
-  .beyond-img-wrap { flex: none; width: 100%; height: 240px; }
-  .safety { padding: 52px 22px; }
-  .safety h2 { font-size: 26px; }
-  .contact { padding: 52px 22px; }
-  .contact h2 { font-size: 26px; }
-  .form-row { grid-template-columns: 1fr; }
-}
-@media (max-width: 560px) {
-  .hero-left h1 { font-size: 22px; }
-  .curriculum h2 { font-size: 22px; }
-  .logo-row .boards-img { height: 46px; }
-  .feat-grid { grid-template-columns: 1fr 1fr; gap: 9px; }
-  .adm-btns { flex-direction: column; }
-  .campus-photos { grid-template-columns: 1fr; }
-  .btn-submit { padding: 15px 36px; font-size: 13.5px; }
-  .sf-item { font-size: 12px; padding: 0 10px; }
+  .feat-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
-  </style>
-</head>
-<body>
+/* TABLET */
+@media (max-width: 900px) {
+
+  .navbar {
+    padding: 12px 22px;
+    height: auto;
+  }
+
+  .navbar-logo {
+    height: 42px;
+  }
+
+  /* HERO */
+  .hero {
+    flex-direction: column;
+  }
+
+  .hero-left {
+    padding: 42px 24px 32px;
+    text-align: center;
+    align-items: center;
+  }
+
+  .hero-left h1 {
+    font-size: 30px;
+    line-height: 1.3;
+  }
+
+  .hero-left p {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .hero-right {
+    min-height: auto;
+    transform: none;
+  }
+
+  .hero-img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* ADMISSION */
+  .admission {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .admission-photo {
+    flex: none;
+    height: 260px;
+    min-height: 260px;
+  }
+
+  .admission-photo .student-img {
+    height: 100%;
+    width: auto;
+    max-width: 100%;
+  }
+
+  .admission-body {
+    padding: 36px 24px;
+    align-items: center;
+  }
+
+  .admission-body h2 {
+    font-size: 28px;
+  }
+
+  .admission-body p {
+    text-align: center;
+  }
+
+  .adm-btns {
+    justify-content: center;
+  }
+
+  /* CURRICULUM */
+  .curriculum {
+    padding: 56px 24px;
+  }
+
+  .curriculum h2 {
+    font-size: 32px;
+    line-height: 1.3;
+  }
+
+  .feat-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  .feat-card {
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    padding: 18px 14px;
+  }
+
+  /* CAMPUS */
+  .campus {
+    padding: 56px 24px;
+  }
+
+  .sec-heading {
+    font-size: 30px;
+  }
+
+  .sec-desc {
+    text-align: center;
+  }
+
+  .campus-cols {
+    flex-direction: column;
+    gap: 34px;
+  }
+
+  .campus-belief {
+    width: 100%;
+    text-align: center;
+  }
+
+  .campus-belief h3 {
+    text-align: center;
+  }
+
+  .campus-belief > p {
+    text-align: center;
+  }
+
+  /* BEYOND */
+  .beyond {
+    padding: 56px 24px;
+  }
+
+  .beyond-cols {
+    flex-direction: column;
+    gap: 34px;
+    margin-top: 36px;
+  }
+
+  .beyond-img-wrap {
+    width: 100%;
+    height: 240px;
+  }
+
+  .beyond-text {
+    text-align: center;
+  }
+
+  .beyond-list li {
+    justify-content: center;
+    text-align: left;
+  }
+
+  /* SAFETY */
+  .safety {
+    padding: 56px 24px;
+  }
+
+  .safety h2 {
+    font-size: 30px;
+  }
+
+  .safety-features {
+    gap: 10px;
+  }
+
+  .sf-item {
+    border-right: none;
+    padding: 0;
+  }
+
+  /* CONTACT */
+  .contact {
+    padding: 56px 24px;
+  }
+
+  .contact h2 {
+    font-size: 30px;
+  }
+
+  .contact-tags {
+    gap: 10px;
+  }
+
+  .ct-div {
+    display: none;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .btn-submit {
+    width: 100%;
+  }
+}
+
+
+/* MOBILE */
+@media (max-width: 560px) {
+
+  .navbar {
+    padding: 12px 16px;
+  }
+
+  .btn-apply {
+    padding: 9px 16px;
+    font-size: 12px;
+  }
+
+  .hero-left {
+    padding: 34px 18px 26px;
+  }
+
+  .hero-left h1 {
+    font-size: 24px;
+  }
+
+  .hero-left p {
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+  .curriculum h2,
+  .sec-heading,
+  .safety h2,
+  .contact h2 {
+    font-size: 24px;
+  }
+
+  .logo-row .boards-img {
+    height: 42px;
+  }
+
+  .feat-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .feat-card {
+    width: 100%;
+  }
+
+  .adm-btns {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .adm-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .feel-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .campus-photos {
+    grid-template-columns: 1fr;
+  }
+
+  .campus-photos img {
+    height: 220px;
+  }
+
+  .beyond-img-wrap {
+    height: 220px;
+  }
+
+  .beyond-list li {
+    font-size: 13px;
+  }
+
+  .btn-submit {
+    padding: 15px 24px;
+    font-size: 13px;
+  }
+
+  .sf-item {
+    width: 100%;
+    text-align: center;
+  }
+
+}
+</style>
 
 <!-- ═══════════════════════════════════════
      NAVBAR
